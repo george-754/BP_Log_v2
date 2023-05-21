@@ -80,3 +80,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(home_intent);
     }
 }
+
+// TODO: Change styles, Change list row style, Change style of add screen
+// TODO: Add screen.  Want to group elements together by vitals, time, date.  Maybe make time and date collapsable.
