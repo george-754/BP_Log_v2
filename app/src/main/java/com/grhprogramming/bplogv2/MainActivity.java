@@ -2,10 +2,14 @@ package com.grhprogramming.bplogv2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.grhprogramming.bplogv2.data.BP;
 import com.grhprogramming.bplogv2.data.CustomAdapter;
@@ -43,6 +47,25 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intentAdd);
         });
 
+        // Set long press to invoke remove bp
+        listView.setOnItemLongClickListener((adapterView, view, i, l) -> {
+            BP dataModel = dataModels.get(i);
+
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(MainActivity.this);
+            builder.setTitle("Delte BP!");
+            builder.setMessage("Are you sure you want to delete this blood pressure?");
+
+            builder.setPositiveButton("Yes", (dialogInterface, i1) -> {
+                db.deleteBp(dataModel.getId());
+                refreshHome();
+            });
+
+            builder.setNegativeButton("No", null);
+            builder.show();
+
+            return false;
+        });
+
     }
 
     @Override
@@ -50,5 +73,10 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         finish();
         startActivity(getIntent());
+    }
+
+    public void refreshHome() {
+        Intent home_intent = new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(home_intent);
     }
 }
