@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BP Log v2</string>
+    <string name="add_bp">Add blood pressure.</string>
+    <string name="txt_time">Time:</string>
+    <string name="txt_hour">Hour</string>
+    <string name="txt_minute">Minute</string>
+    <string name="txt_stystolic">Systolic</string>
+    <string name="txt_dystolic">Dystolic</string>
+    <string name="txt_bp">Blood Pressure:</string>
+    <string name="txt_hr">Heart Rate</string>
+    <string name="divider_bp">/</string>
+    <string name="divider_time">:</string>
+    <string name="button_save">Save</string>
+    <string name="empty">Unable to save data.</string>
+</resources>
